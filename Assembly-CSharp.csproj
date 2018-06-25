@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Assets\GameManager.cs" />
     <Compile Include="Assets\Head.cs" />
+    <Compile Include="Assets\PlayersSpawner.cs" />
     <Compile Include="Assets\Tail.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>/Users/talgvili/Documents/Unity/New Unity Project/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>

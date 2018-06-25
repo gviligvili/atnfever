@@ -4,24 +4,22 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour {
 
+    public PlayersSpawner playersSpawner;
+
 	private void Start()
 	{
-        SpawnPlayers();
+        playersSpawner.SpawnPlayers(1);
 	}
 
 	// Use this for initialization
 	public void EndGame () {
         Debug.Log("GameOver");
-        StartCoroutine(PlayEndGameAnimation());
+        //StartCoroutine(PlayEndGameAnimation());
 	}
 
     IEnumerator PlayEndGameAnimation() {
         Debug.Log("Playing end animation");
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-
-    void SpawnPlayers() {
-        
     }
 }

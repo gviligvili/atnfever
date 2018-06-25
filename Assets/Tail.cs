@@ -13,6 +13,7 @@ public class Tail : MonoBehaviour {
     LineRenderer line;
     EdgeCollider2D col;
     List<Vector2> points; 
+
 	// Use this for initializa tion
 	void Start () {
         // Attach the the Tail into the head.
@@ -42,7 +43,6 @@ public class Tail : MonoBehaviour {
         }
 
         points.Add(head.position);
-
         line.positionCount = this.points.Count;
         line.SetPosition(points.Count - 1, head.position);
     }
