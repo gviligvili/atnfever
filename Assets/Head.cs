@@ -6,9 +6,15 @@ public class Head : MonoBehaviour {
 
     public float speed = 3f;
     public float rotationSpeed = 200f;
-    public bool isDead = false;
-
+    public bool isAlive;
+    public Animator animator;
     float horizontal = 0;
+
+	private void Start()
+	{
+        animator = GetComponent<Animator>();
+        animator.SetBool("alive", isAlive);
+	}
 
 	// Update is called once per frame
 	void Update () {
@@ -17,7 +23,9 @@ public class Head : MonoBehaviour {
 
 	private void FixedUpdate()
 	{
-        if (!isDead) {
+        if (isAlive) {
+            animator.SetBool("alive", isAlive);
+
             transform.Translate(Vector2.up * speed * Time.deltaTime, Space.Self);
             transform.Rotate(Vector3.forward * -horizontal * rotationSpeed * Time.deltaTime);
         }
@@ -27,8 +35,13 @@ public class Head : MonoBehaviour {
 	{
         Debug.Log("TRIGGERRR");
         if (collision.tag == "KillsPlayer") {
-            isDead = true;
+            killPlayer();
             FindObjectOfType<GameManager>().EndGame();
         }
 	}
+
+    public void killPlayer() {
+        isAlive = false;
+        animator.SetBool("alive", isAlive);
+    }
 }

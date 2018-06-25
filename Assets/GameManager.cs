@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour {
 	private void Start()
 	{
         SpawnPlayers();
-
 	}
 
 	// Use this for initialization

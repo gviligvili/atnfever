@@ -45,6 +45,5 @@ public class Tail : MonoBehaviour {
 
         line.positionCount = this.points.Count;
         line.SetPosition(points.Count - 1, head.position);
-
     }
 }
