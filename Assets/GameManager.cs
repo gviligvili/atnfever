@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	public void EndGame () {
         Debug.Log("GameOver");
-        //StartCoroutine(PlayEndGameAnimation());
+        StartCoroutine(PlayEndGameAnimation());
 	}
 
     IEnumerator PlayEndGameAnimation() {

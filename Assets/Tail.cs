@@ -15,18 +15,13 @@ public class Tail : MonoBehaviour {
     List<Vector2> points;
 
 
-    // Test
-    public Head head;
 	// Use this for initializa tion
 	void Start () {
-        // Attach the the Tail into the head.
-        //this.transform.position = head.position;
-
         line = GetComponent<LineRenderer>();
         col = GetComponent<EdgeCollider2D>();
         points = new List<Vector2>();
-        setPoint(); 
 
+        setPoint(); 
 	}
 	
 	// Update is called once per frame
