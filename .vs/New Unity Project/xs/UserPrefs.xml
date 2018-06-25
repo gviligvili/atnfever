@@ -1,11 +1,11 @@
 ﻿<Properties StartupConfiguration="{B2B58FB2-4462-6B0C-A872-40DD957E5FE0}|">
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/GameManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Tail.cs">
     <Files>
-      <File FileName="Assets/Tail.cs" Line="30" Column="28" />
+      <File FileName="Assets/Tail.cs" Line="46" Column="87" />
       <File FileName="Assets/PlayersSpawner.cs" Line="27" Column="110" />
-      <File FileName="Assets/Head.cs" Line="30" Column="92" />
-      <File FileName="Assets/GameManager.cs" Line="17" Column="25" />
+      <File FileName="Assets/Head.cs" Line="30" Column="94" />
+      <File FileName="Assets/GameManager.cs" Line="11" Column="38" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
