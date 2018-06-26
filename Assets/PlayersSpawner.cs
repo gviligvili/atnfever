@@ -88,11 +88,5 @@ public class PlayersSpawner : MonoBehaviour {
         return new Vector2(x, y);
     }
 
-    void CalculateSpawnPoints() {
-        // Choose randomly within the range,
 
-    }
-
-    void CheckIfFarEnough() {
-    }
 }
