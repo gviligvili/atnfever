@@ -62,11 +62,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\GameManager.cs" />
-    <Compile Include="Assets\Head.cs" />
     <Compile Include="Assets\PlayersSpawner.cs" />
     <Compile Include="Assets\PowerUp.cs" />
     <Compile Include="Assets\PowerUpsSpawner.cs" />
-    <Compile Include="Assets\Tail.cs" />
+    <Compile Include="Assets\Sprites\Player\Head.cs" />
+    <Compile Include="Assets\Sprites\Player\Player.cs" />
+    <Compile Include="Assets\Sprites\Player\Tail.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>/Users/talgvili/Documents/Unity/New Unity Project/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>

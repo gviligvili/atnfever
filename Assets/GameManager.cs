@@ -8,13 +8,13 @@ public class GameManager : MonoBehaviour {
 
 	private void Start()
 	{
-        playersSpawner.SpawnPlayers(0);
+        playersSpawner.SpawnPlayers(1);
 	}
 
 	// Use this for initialization
 	public void EndGame () {
         Debug.Log("GameOver");
-        StartCoroutine(PlayEndGameAnimation());
+        //StartCoroutine(PlayEndGameAnimation());
 	}
 
     IEnumerator PlayEndGameAnimation() {

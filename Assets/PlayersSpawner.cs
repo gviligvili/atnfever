@@ -7,7 +7,8 @@ public class PlayersSpawner : MonoBehaviour {
     public float width;
     public float height;
     public float radius;
-    public GameObject player;
+    public GameObject playerScript;
+    private List<Player> _allPlayers = new List<Player>();
 
     void OnDrawGizmos() {
         Gizmos.DrawWireCube(transform.position, new Vector3(width,height));
@@ -23,7 +24,9 @@ public class PlayersSpawner : MonoBehaviour {
         Debug.Log("Drawing Players");
         foreach(Vector2 playerPos in playersPositions){
             // Draw a single player
-            GameObject currPlayer = Instantiate(player, playerPos, Quaternion.identity);
+            GameObject currPlayer = Instantiate(playerScript, playerPos, Quaternion.identity);
+            _allPlayers.Add(currPlayer.GetComponent<Player>());
+
             // Create a random angle for the spawning point. (so not everyone will be at the same direction).
             int alpha = Random.Range(-180, 180);
             currPlayer.transform.Rotate(new Vector3(0, 0, alpha));
@@ -88,5 +91,9 @@ public class PlayersSpawner : MonoBehaviour {
         return new Vector2(x, y);
     }
 
+
+    public List<Player> GetAllPlayers() {
+        return _allPlayers;
+    }
 
 }
