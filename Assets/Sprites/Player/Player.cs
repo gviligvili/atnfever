@@ -5,10 +5,11 @@ using UnityEngine;
 public class Player : MonoBehaviour {
 
     public Head head;
-    public Tail tail;
 
     IEnumerator speedCoroutine;
     bool speedCoroutineRunning;
+    IEnumerator thicknessCoroutine;
+    bool thicknessCoroutineRunning;
 
 	// Use this for initialization
 	void Start () {
@@ -41,6 +42,4 @@ public class Player : MonoBehaviour {
         Debug.Log("Reched END OF ROUTINE !");
         speedCoroutineRunning = false;
     }
-
-
 }

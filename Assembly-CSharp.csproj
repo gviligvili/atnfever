@@ -68,6 +68,7 @@
     <Compile Include="Assets\Sprites\Player\Head.cs" />
     <Compile Include="Assets\Sprites\Player\Player.cs" />
     <Compile Include="Assets\Sprites\Player\Tail.cs" />
+    <Compile Include="Assets\Sprites\Player\TailPart.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>/Users/talgvili/Documents/Unity/New Unity Project/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
