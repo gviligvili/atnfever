@@ -5,12 +5,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
 public class MenuManager : MonoBehaviour {
 
     PlayerRow[] playersRow;
     public Button startButton;
     public Text errorTxt;
-    public static List<PlayerRow> activePlayers;
+    public static List<PlayerMeta> activePlayers;
 
 	private void Awake()
 	{
@@ -57,9 +58,9 @@ public class MenuManager : MonoBehaviour {
         errorTxt.text = "";
     }
 
-    List<PlayerRow> ValidatePlayers()
+    List<PlayerMeta> ValidatePlayers()
 	{
-        List<PlayerRow> playersToActivate = new List<PlayerRow>();
+        List<PlayerMeta> playersToActivate = new List<PlayerMeta>();
 
         for (int i = 0; i < playersRow.Length; i++)
         {
@@ -73,7 +74,11 @@ public class MenuManager : MonoBehaviour {
             }
 
             if (isLeftKeyAssigned && isRightKeyAssigned) {
-                playersToActivate.Add(currPlayerRow);
+                PlayerMeta pm = new PlayerMeta();
+                pm.LeftKey = currPlayerRow.Left.text;
+                pm.RightKey = currPlayerRow.Right.text;
+                pm.playerColor = currPlayerRow.getPlayerColor();
+                playersToActivate.Add(pm);
             }
         }
 
@@ -83,5 +88,17 @@ public class MenuManager : MonoBehaviour {
         }
 
         return playersToActivate;
+    }
+
+    /**
+     * make every player out of focus,
+     * used when you want to focus new player.
+     */
+    public void BlurAllPlayers() {
+        for (int i = 0; i < playersRow.Length; i++)
+        {
+            PlayerRow currP = playersRow[i];
+            currP.turnOff();
+        }
     }
 }

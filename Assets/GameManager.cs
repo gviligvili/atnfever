@@ -10,9 +10,7 @@ public class GameManager : MonoBehaviour {
 
 	private void Start()
 	{
-        List<PlayerRow> activePlayers = MenuManager.activePlayers;
-
-        playersSpawner.SpawnPlayers(0);
+        playersSpawner.SpawnPlayers();
 	}
 
 	// Use this for initialization

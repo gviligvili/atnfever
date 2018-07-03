@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Tail : MonoBehaviour {
 
+    public Color myColor;
     public GameObject TailPartPrefab;
     public Transform followMe;
     public float pointSpacing;
@@ -20,8 +21,6 @@ public class Tail : MonoBehaviour {
 	void Start () {
         StartCoroutine(StartDraw());
 	}
-
-
 
     // Update is called once per frame
     void Update()
@@ -66,9 +65,17 @@ public class Tail : MonoBehaviour {
         }
 
         GameObject newTailPart = (GameObject)Instantiate(TailPartPrefab);
+        newTailPart.name = "TailPart" + tailsPartList.Count.ToString();
+        newTailPart.transform.parent = this.transform.parent;
+        // make the color alittle bit 
+        newTailPart.GetComponent<LineRenderer>().material.color = myColor;
         currTailPart = newTailPart.GetComponent<TailPart>();
 
         // Set the first point
         currTailPart.setPoint(followMe.position);
+    }
+
+    public void setTailColor(Color color) {
+        myColor = color;
     }
 }

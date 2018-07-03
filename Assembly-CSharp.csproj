@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Assets\GameManager.cs" />
     <Compile Include="Assets\MenuManager.cs" />
+    <Compile Include="Assets\PlayerMeta.cs" />
     <Compile Include="Assets\PlayerRow.cs" />
     <Compile Include="Assets\Sprites\Player\Head.cs" />
     <Compile Include="Assets\Sprites\Player\Player.cs" />

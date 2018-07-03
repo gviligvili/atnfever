@@ -13,6 +13,8 @@ public class Head : MonoBehaviour
     public bool isAlive;
     public PowerUpsSpawner powerUpsSpawner;
     public SpeedPowerUpEnum speedPowerUpStatus = SpeedPowerUpEnum.NONE;
+    public KeyCode LeftKey;
+    public KeyCode RightKey;
 
     public Animator animator;
     float horizontal = 0;
@@ -26,7 +28,16 @@ public class Head : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        horizontal = Input.GetAxisRaw("Horizontal");
+        if(Input.GetKey(LeftKey)) {
+            horizontal = -1;
+            Debug.Log("LEFTTT");
+        } else if (Input.GetKey(RightKey)){
+            horizontal = 1;
+            Debug.Log("RIGHT");
+        } else {
+            horizontal = 0;
+            Debug.Log("STRAIGHT");
+        }
     }
 
     private void FixedUpdate()
@@ -76,6 +87,11 @@ public class Head : MonoBehaviour
 
     public void setSpeedPowerUpStatus(SpeedPowerUpEnum status) {
         speedPowerUpStatus = status;
+    }
+
+    public void setKeys(string Left, string Right) {
+        LeftKey = (KeyCode)System.Enum.Parse(typeof(KeyCode), Left);
+        RightKey = (KeyCode)System.Enum.Parse(typeof(KeyCode), Right);
     }
 
     public void killPlayer()

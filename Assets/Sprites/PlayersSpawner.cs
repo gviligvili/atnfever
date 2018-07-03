@@ -7,7 +7,7 @@ public class PlayersSpawner : MonoBehaviour {
     public float width;
     public float height;
     public float radius;
-    public GameObject playerScript;
+    public GameObject playerFab;
     private List<Player> _allPlayers = new List<Player>();
 
     void OnDrawGizmos() {
@@ -15,17 +15,30 @@ public class PlayersSpawner : MonoBehaviour {
         Gizmos.DrawWireSphere(transform.position, radius);
     }
 
-    public void SpawnPlayers(int numOfPlayers) {
-        Vector2[] playersPositions = getPlayersPositions(numOfPlayers);
-        DrawPlayers(playersPositions);
+    public void SpawnPlayers() {
+        //List<PlayerMeta> playerMetas = MenuManager.activePlayers;
+        List<PlayerMeta> playerMetas = createMockPlayers();
+
+        Vector2[] playersPositions = getPlayersPositions(playerMetas.Count);
+        DrawPlayers(playersPositions, playerMetas);
     }
 
-    void DrawPlayers(Vector2[] playersPositions){
+    void DrawPlayers(Vector2[] playersPositions, List<PlayerMeta> playerMetas){
         Debug.Log("Drawing Players");
-        foreach(Vector2 playerPos in playersPositions){
+
+        for (int i = 0; i < playerMetas.Count; i++)
+        {
+            Vector2 playerPos = playersPositions[i];
+            PlayerMeta currPlayerMeta = playerMetas[i];
+
             // Draw a single player
-            GameObject currPlayer = Instantiate(playerScript, playerPos, Quaternion.identity);
-            _allPlayers.Add(currPlayer.GetComponent<Player>());
+            GameObject currPlayerGO = Instantiate(playerFab, playerPos, Quaternion.identity);
+            currPlayerGO.name = "Player " + i;
+            Player currPlayer = currPlayerGO.GetComponent<Player>();
+
+            currPlayer.setPlayerColor(currPlayerMeta.playerColor);
+            currPlayer.setKeys(currPlayerMeta.LeftKey, currPlayerMeta.RightKey);
+            _allPlayers.Add(currPlayer);
 
             // Create a random angle for the spawning point. (so not everyone will be at the same direction).
             int alpha = Random.Range(-180, 180);
@@ -96,4 +109,36 @@ public class PlayersSpawner : MonoBehaviour {
         return _allPlayers;
     }
 
+
+    private List<PlayerMeta> createMockPlayers() {
+        PlayerMeta player1 = new PlayerMeta();
+        player1.playerColor = PlayerColor.RED;
+        player1.LeftKey = "Alpha1";
+        player1.RightKey = "Alpha2";
+
+        PlayerMeta player2 = new PlayerMeta();
+        player2.playerColor = PlayerColor.BLUE;
+        player2.LeftKey = "Q";
+        player2.RightKey = "W";
+
+        PlayerMeta player3 = new PlayerMeta();
+        player3.playerColor = PlayerColor.GREEN;
+        player3.LeftKey = "A";
+        player3.RightKey = "S";
+
+
+        PlayerMeta player4 = new PlayerMeta();
+        player4.playerColor = PlayerColor.PURPLE;
+        player4.LeftKey = "Z";
+        player4.RightKey = "X";
+
+
+        List<PlayerMeta> playerMetas = new List<PlayerMeta>();
+        playerMetas.Add(player1);
+        playerMetas.Add(player2);
+        playerMetas.Add(player3);
+        playerMetas.Add(player4);
+
+        return playerMetas;
+    }
 }

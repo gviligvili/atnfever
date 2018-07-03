@@ -301,6 +301,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   head: {fileID: 114397032556445162}
+  tail: {fileID: 0}
+  playerColor: 0
 --- !u!114 &114397032556445162
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -318,6 +320,8 @@ MonoBehaviour:
   isAlive: 1
   powerUpsSpawner: {fileID: 0}
   speedPowerUpStatus: 1
+  LeftKey: 0
+  RightKey: 0
   animator: {fileID: 0}
 --- !u!114 &114479609444619548
 MonoBehaviour:
@@ -330,8 +334,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c64b58c362af54aeba8b12a661ab9c6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointSpacing: 0.1
-  followMe: {fileID: 4574176051065660}
 --- !u!114 &114647687338352370
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -344,6 +346,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   head: {fileID: 114397032556445162}
+  tail: {fileID: 0}
+  playerColor: 0
 --- !u!114 &114855552800198896
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -355,7 +359,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92d159296bcce49799ab1e83d8231fb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TailPart: {fileID: 0}
+  myColor: {r: 0, g: 0, b: 0, a: 0}
+  TailPartPrefab: {fileID: 0}
+  followMe: {fileID: 0}
+  pointSpacing: 0
+  drawingTime: 0
+  drawPauseTime: 0
+  tailsPartList: []
 --- !u!120 &120007265245735042
 LineRenderer:
   m_ObjectHideFlags: 1
