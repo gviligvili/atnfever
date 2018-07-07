@@ -35,7 +35,7 @@ public class PlayersSpawner : MonoBehaviour {
             GameObject currPlayerGO = Instantiate(playerFab, playerPos, Quaternion.identity);
             currPlayerGO.name = "Player " + i;
             Player currPlayer = currPlayerGO.GetComponent<Player>();
-
+            currPlayer.id = currPlayerGO.name;
             currPlayer.setPlayerColor(currPlayerMeta.playerColor);
             currPlayer.setKeys(currPlayerMeta.LeftKey, currPlayerMeta.RightKey);
             _allPlayers.Add(currPlayer);

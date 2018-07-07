@@ -5,17 +5,22 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-
+    public String id;
     public Head head;
     public Tail tail;
     public PlayerColor playerColor;
+
     IEnumerator speedCoroutine;
     bool speedCoroutineRunning;
     IEnumerator thicknessCoroutine;
     bool thicknessCoroutineRunning;
+    PlayersSpawner playersSpawner;
+    PowerUpsSpawner powerUpsSpawner;
 
 	private void Awake()
 	{
+        playersSpawner = FindObjectOfType<PlayersSpawner>();
+        powerUpsSpawner = FindObjectOfType<PowerUpsSpawner>();
 	}
 
 	// Use this for initialization
@@ -35,7 +40,6 @@ public class Player : MonoBehaviour
         playerColor = newColor;
         head.GetComponent<SpriteRenderer>().color = PlayerMeta.convertPlayerColorToHeadColor(newColor);
         tail.setTailColor(PlayerMeta.convertPlayerColorToTailColor(newColor));
-
     }
 
 
@@ -68,4 +72,16 @@ public class Player : MonoBehaviour
 	{
         head.setKeys(leftKey, rightKey);
 	}
+
+    public void kill()
+    {
+        head.killHead();
+        tail.killTail();
+        FindObjectOfType<GameManager>().EndGame();
+    }
+
+    public void pickedPowerUp(PowerUp powerUp)
+    {
+        powerUpsSpawner.PickedPowerUp(this, powerUp);
+    }
 }

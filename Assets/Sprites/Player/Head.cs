@@ -11,18 +11,19 @@ public class Head : MonoBehaviour
     public float speedPowerUpBuffer = 1.5f;
     public float rotationSpeed = 200f;
     public bool isAlive;
-    public PowerUpsSpawner powerUpsSpawner;
     public SpeedPowerUpEnum speedPowerUpStatus = SpeedPowerUpEnum.NONE;
     public KeyCode LeftKey;
     public KeyCode RightKey;
-
     public Animator animator;
+
     float horizontal = 0;
+    Player player;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
         animator.SetBool("alive", isAlive);
+        player = GetComponentInParent<Player>();
     }
 
     // Update is called once per frame
@@ -73,15 +74,13 @@ public class Head : MonoBehaviour
     {
         if (collision.tag == "KillsPlayer")
         {
-            killPlayer();
-            FindObjectOfType<GameManager>().EndGame();
+            headHit();
         }
 
         if (collision.tag == "PowerUp")
         {
             PowerUp powerUp = collision.gameObject.GetComponent<PowerUp>();
-            Player me = transform.parent.gameObject.GetComponent<Player>();
-            powerUpsSpawner.PickedPowerUp(me, powerUp);
+            player.pickedPowerUp(powerUp);
         }
     }
 
@@ -94,7 +93,12 @@ public class Head : MonoBehaviour
         RightKey = (KeyCode)System.Enum.Parse(typeof(KeyCode), Right);
     }
 
-    public void killPlayer()
+    public void headHit()
+    {
+        player.kill();
+    }
+
+    public void killHead()
     {
         isAlive = false;
         animator.SetBool("alive", isAlive);

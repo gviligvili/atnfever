@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,7 +11,7 @@ public class Tail : MonoBehaviour {
     public float pointSpacing;
     public float drawingTime;
     public float drawPauseTime;
-
+    Coroutine currentRoutine;
 
     public List<TailPart> tailsPartList;
     TailPart currTailPart;
@@ -19,7 +20,7 @@ public class Tail : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        StartCoroutine(StartDraw());
+        currentRoutine = StartCoroutine(StartDraw());
 	}
 
     // Update is called once per frame
@@ -46,7 +47,7 @@ public class Tail : MonoBehaviour {
     {
         isDrawing = false;
         yield return new WaitForSeconds(drawPauseTime);
-        StartCoroutine(StartDraw());
+        currentRoutine = StartCoroutine(StartDraw());
     }
 
     IEnumerator StartDraw()
@@ -54,7 +55,7 @@ public class Tail : MonoBehaviour {
         createAssignNewTailPart();
         isDrawing = true;
         yield return new WaitForSeconds(drawingTime);
-        StartCoroutine(PauseDraw());
+        currentRoutine = StartCoroutine(PauseDraw());
     }
 
     private void createAssignNewTailPart() {
@@ -73,6 +74,11 @@ public class Tail : MonoBehaviour {
 
         // Set the first point
         currTailPart.setPoint(followMe.position);
+    }
+
+    public void killTail(){
+        // stop current coroutine.
+        StopCoroutine(currentRoutine);
     }
 
     public void setTailColor(Color color) {
