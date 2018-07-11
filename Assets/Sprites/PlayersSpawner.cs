@@ -10,7 +10,19 @@ public class PlayersSpawner : MonoBehaviour {
     public GameObject playerFab;
     private List<Player> _allPlayers = new List<Player>();
 
-    void OnDrawGizmos() {
+    private void Awake()
+    {
+        SpawnPlayers();
+    }
+
+	private void Start()
+	{
+        // Must be here, in Awake state PlayerScoreList doesn't exist.
+        // Register every one you drawed to the scoremanager.
+        ScoreManager.registerPlayers(_allPlayers);
+	}
+
+	void OnDrawGizmos() {
         Gizmos.DrawWireCube(transform.position, new Vector3(width,height));
         Gizmos.DrawWireSphere(transform.position, radius);
     }
@@ -24,7 +36,6 @@ public class PlayersSpawner : MonoBehaviour {
     }
 
     void DrawPlayers(Vector2[] playersPositions, List<PlayerMeta> playerMetas){
-        Debug.Log("Drawing Players");
 
         for (int i = 0; i < playerMetas.Count; i++)
         {
@@ -33,7 +44,7 @@ public class PlayersSpawner : MonoBehaviour {
 
             // Draw a single player
             GameObject currPlayerGO = Instantiate(playerFab, playerPos, Quaternion.identity);
-            currPlayerGO.name = "Player " + i;
+            currPlayerGO.name = "Player " + (i+1);
             Player currPlayer = currPlayerGO.GetComponent<Player>();
             currPlayer.id = currPlayerGO.name;
             currPlayer.setPlayerColor(currPlayerMeta.playerColor);
@@ -98,8 +109,9 @@ public class PlayersSpawner : MonoBehaviour {
         float halfHeight = height / 2;
         float halfWidth = width / 2;
 
-        float x = Random.Range(-halfWidth, halfWidth);
-        float y = Random.Range(-halfHeight, halfHeight);
+        // Random range + the current position we are on.
+        float x = Random.Range(-halfWidth, halfWidth) + this.transform.position.x;
+        float y = Random.Range(-halfHeight, halfHeight) + this.transform.position.y;
 
         return new Vector2(x, y);
     }

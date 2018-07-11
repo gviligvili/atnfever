@@ -31,13 +31,10 @@ public class Head : MonoBehaviour
     {
         if(Input.GetKey(LeftKey)) {
             horizontal = -1;
-            Debug.Log("LEFTTT");
         } else if (Input.GetKey(RightKey)){
             horizontal = 1;
-            Debug.Log("RIGHT");
         } else {
             horizontal = 0;
-            Debug.Log("STRAIGHT");
         }
     }
 

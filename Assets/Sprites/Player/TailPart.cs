@@ -6,20 +6,23 @@ using System;
 
 [RequireComponent(typeof(LineRenderer))]
 [RequireComponent(typeof(EdgeCollider2D))]
-public class TailPart : MonoBehaviour {
+public class TailPart : MonoBehaviour
+{
 
     LineRenderer line;
     EdgeCollider2D col;
     List<Vector2> points;
 
-	// Use this for initializa tion
-	void Awake () {
+    // Use this for initializa tion
+    void Awake()
+    {
         line = GetComponent<LineRenderer>();
         col = GetComponent<EdgeCollider2D>();
         points = new List<Vector2>();
-     }
+    }
 
-    public void setPoint(Vector3 followMePosition) {
+    public void setPoint(Vector3 followMePosition)
+    {
 
         // We are getting the followMe (bottom of the plane) object world coords.
         // Transform the world coords to local coords (where should we put our self in our parent).
@@ -35,9 +38,5 @@ public class TailPart : MonoBehaviour {
         points.Add(newLocalPoint);
         line.positionCount = this.points.Count;
         line.SetPosition(points.Count - 1, newLocalPoint);
-
-        Debug.Log("New point !");
     }
-
-
 }

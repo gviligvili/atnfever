@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public String id;
     public Head head;
     public Tail tail;
+    public ScoreManager scoreManager;
     public PlayerColor playerColor;
 
     IEnumerator speedCoroutine;
@@ -21,6 +22,7 @@ public class Player : MonoBehaviour
 	{
         playersSpawner = FindObjectOfType<PlayersSpawner>();
         powerUpsSpawner = FindObjectOfType<PowerUpsSpawner>();
+        scoreManager = FindObjectOfType<ScoreManager>();
 	}
 
 	// Use this for initialization
@@ -77,7 +79,7 @@ public class Player : MonoBehaviour
     {
         head.killHead();
         tail.killTail();
-        FindObjectOfType<GameManager>().EndGame();
+        scoreManager.playerIsDead(this);
     }
 
     public void pickedPowerUp(PowerUp powerUp)

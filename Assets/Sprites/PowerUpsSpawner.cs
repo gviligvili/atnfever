@@ -42,8 +42,8 @@ public class PowerUpsSpawner : MonoBehaviour {
         float halfHeight = height / 2;
         float halfWidth = width / 2;
 
-        float x = UnityEngine.Random.Range(-halfWidth, halfWidth);
-        float y = UnityEngine.Random.Range(-halfHeight, halfHeight);
+        float x = UnityEngine.Random.Range(-halfWidth, halfWidth) + this.transform.position.x;;
+        float y = UnityEngine.Random.Range(-halfHeight, halfHeight) + this.transform.position.y;
 
         return new Vector2(x, y);
     }
@@ -69,7 +69,7 @@ public class PowerUpsSpawner : MonoBehaviour {
     }
 
     public void applyPowerUpOnOthers(Player player, PowerUp powerUp) {
-        List<Player> allPlayers = playersSpawner.GetAllPlayers();
+        List<Player> allPlayers = new List<Player>(playersSpawner.GetAllPlayers());
         allPlayers.Remove(player);
         allPlayers.ForEach((Player otherPlayer) => applyPowerUp(otherPlayer, powerUp));
     }

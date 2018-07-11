@@ -65,6 +65,10 @@
     <Compile Include="Assets\MenuManager.cs" />
     <Compile Include="Assets\PlayerMeta.cs" />
     <Compile Include="Assets\PlayerRow.cs" />
+    <Compile Include="Assets\PlayerScoreList.cs" />
+    <Compile Include="Assets\ScoreManager.cs" />
+    <Compile Include="Assets\ScoreOverview.cs" />
+    <Compile Include="Assets\ScoreRow.cs" />
     <Compile Include="Assets\Sprites\Player\Head.cs" />
     <Compile Include="Assets\Sprites\Player\Player.cs" />
     <Compile Include="Assets\Sprites\Player\Tail.cs" />
